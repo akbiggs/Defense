@@ -56,8 +56,14 @@ namespace Defense
 
         public virtual void Update()
         {
+            this.Move();
+        }
+
+        public virtual void Move()
+        {
             this.Velocity.Y += World.Gravity;
-            
+            this.Position += Velocity;
+
             if (Bottom > Engine.ScreenResolution.Y - World.BaseHeight)
             {
                 Bottom = Engine.ScreenResolution.Y - World.BaseHeight;
@@ -70,9 +76,9 @@ namespace Defense
                 HitAgainstWall();
             }
 
-            if (Right > Engine.ScreenResolution.X) 
+            if (Right > Engine.ScreenResolution.X)
             {
-                Right = Engine.ScreenResolution.X; 
+                Right = Engine.ScreenResolution.X;
             }
         }
 

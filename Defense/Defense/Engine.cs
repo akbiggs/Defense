@@ -51,6 +51,9 @@ namespace Defense
             base.Initialize();
             graphics.IsFullScreen = true;
             graphics.SupportedOrientations = DisplayOrientation.Portrait;
+            graphics.PreferredBackBufferWidth = 480;
+            graphics.PreferredBackBufferHeight = 800;
+            graphics.ApplyChanges();
         }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace Defense
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            ScreenResolution = new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            ScreenResolution = new Vector2(graphics.PreferredBackBufferHeight, graphics.PreferredBackBufferWidth);
             ResourceManager.LoadContent(Content);
 
             world = new World((int)ScreenResolution.X, (int)ScreenResolution.Y);
@@ -87,6 +90,7 @@ namespace Defense
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
+            Input.Update();
             world.Update();
 
             base.Update(gameTime);
@@ -98,7 +102,7 @@ namespace Defense
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             world.Draw(spriteBatch);
 

@@ -10,9 +10,4 @@ bin\Windows Phone\Debug\
 c:\users\bill\code\Defense\Defense\Defense\bin\Windows Phone\Debug\Defense.xap
 c:\users\bill\code\Defense\Defense\Defense\obj\Windows Phone\Debug\XapCacheFile.xml
 c:\users\bill\code\Defense\Defense\Defense\bin\Windows Phone\Debug\Content\Pixel.xnb
-c:\users\bill\code\Defense\Defense\Defense\bin\Windows Phone\Debug\Defense.xap
-c:\users\bill\code\Defense\Defense\Defense\obj\Windows Phone\Debug\XapCacheFile.xml
-c:\users\bill\code\Defense\Defense\Defense\bin\Windows Phone\Debug\AppManifest.xaml
-c:\users\bill\code\Defense\Defense\Defense\obj\Windows Phone\Debug\WMAppManifest.xml.g
-c:\users\bill\code\Defense\Defense\Defense\obj\Windows Phone\Debug\WMAppManifest.xml
-bin\Windows Phone\Debug\
+C:\Users\Bill\code\Defense\Defense\Defense\obj\Windows Phone\Debug\Defense.csprojResolveAssemblyReference.cache

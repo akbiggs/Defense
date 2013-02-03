@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Defense
 {
     public class Player : GameObject
     {
+        public static int FIRE_OFFSET = 100;
+
         const int SIZE_X = 48;
         const int SIZE_Y = 48;
 
         const int HEALTH = 3;
 
-        const int FIRE_OFFSET = 50;
         const float MOVE_SPEED_X = 10f;
         const float FIRE_SPEED = 10f;
 
@@ -33,12 +35,12 @@ namespace Defense
         {
             if (Input.ScreenTapped)
             {
-                if (Input.TapPosition.Y > Top - FIRE_OFFSET)
+                if (Input.TapPosition.Y < Top - FIRE_OFFSET)
                 {
                     FireAt(Input.TapPosition);
                 }
                 else
-                    MoveTo(Input.TapPosition);
+                    MoveTo(new Vector2(Input.TapPosition.X, Top));
             }
 
             if (ShouldMove)
@@ -74,7 +76,7 @@ namespace Defense
             base.HitAgainstWall();
         }
 
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spr)
+        public override void Draw(SpriteBatch spr)
         {
             base.Draw(spr);
         }
