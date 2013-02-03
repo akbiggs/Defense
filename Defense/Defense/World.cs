@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace Defense
 {
@@ -10,7 +11,8 @@ namespace Defense
     {
 
         public Player Player;
-        public List<Alien> Aliens = new List<Alien>();
+        public BufferedList<Alien> Aliens = new BufferedList<Alien>();
+        public BufferedList<Projectile> Projectiles = new BufferedList<Projectile>(); 
 
         public float Gravity = 0.75f;
         int width, height;
@@ -21,6 +23,9 @@ namespace Defense
         {
             this.width = width;
             this.height = height;
+
+            Player = new Player(this, new Vector2(width/2, 0));
+            Player.Bottom = BaseHeight;
         }
 
         internal void Update()

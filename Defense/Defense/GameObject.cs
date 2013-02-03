@@ -23,6 +23,8 @@ namespace Defense
 
         public bool ShouldCollide = false;
 
+        public float Rotation = 0;
+
         public float Top { get { return Position.Y; } set { Position = new Vector2(Position.X, value); } }
         public float Bottom { get { return Position.Y + Size.Y; } set { Position = new Vector2(Position.X, value - Size.Y); } }
         public float Left { get { return Position.X; } set { Position = new Vector2(value, Position.Y); } }
@@ -92,7 +94,7 @@ namespace Defense
         public virtual void Draw(SpriteBatch spr)
         {
             spr.Draw(CurAnimation.GetTexture(), new Rectangle((int)Position.X, (int)Position.Y, (int)Size.X, (int)Size.Y),
-                CurAnimation.GetFrameRect(), Color, 0, Vector2.Zero, SpriteEffects.None, 0);
+                CurAnimation.GetFrameRect(), Color, Rotation, Vector2.Zero, SpriteEffects.None, 0);
         }
 
         /// <summary>

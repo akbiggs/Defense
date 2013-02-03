@@ -50,7 +50,7 @@ namespace Defense
 
             base.Initialize();
             graphics.IsFullScreen = true;
-            graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft;
+            graphics.SupportedOrientations = DisplayOrientation.Portrait;
         }
 
         /// <summary>
@@ -64,6 +64,7 @@ namespace Defense
             ScreenResolution = new Vector2(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             ResourceManager.LoadContent(Content);
 
+            world = new World((int)ScreenResolution.X, (int)ScreenResolution.Y);
         }
 
         /// <summary>
