@@ -25,6 +25,8 @@ namespace Defense
 
         public float Rotation = 0;
 
+        bool gravitable;
+
         public float Top { get { return Position.Y; } set { Position = new Vector2(Position.X, value); } }
         public float Bottom { get { return Position.Y + Size.Y; } set { Position = new Vector2(Position.X, value - Size.Y); } }
         public float Left { get { return Position.X; } set { Position = new Vector2(value, Position.Y); } }
@@ -32,7 +34,7 @@ namespace Defense
         public Vector2 Center { get { return new Vector2(Left + Size.X / 2, Top + Size.Y / 2); } }
 
         public GameObject(World world, Vector2 position, Vector2 initialVelocity, Vector2 size, List<AnimationSet> animations,
-            String initialAnimation, bool shouldCollide, int health)
+            String initialAnimation, bool shouldCollide, bool gravitable, int health)
         {
             this.World = world;
             this.Position = position;
@@ -43,13 +45,14 @@ namespace Defense
             this.ShouldCollide = shouldCollide;
             this.Health = health;
             this.Color = Color.White;
+            this.gravitable = gravitable;
         }
 
         public GameObject(World world, Vector2 position, Vector2 initialVelocity, Vector2 size, Texture2D texture,
-            bool shouldCollide, int health) : this(world, position, initialVelocity, size, new List<AnimationSet> 
+            bool shouldCollide, bool gravitable, int health) : this(world, position, initialVelocity, size, new List<AnimationSet> 
             {
                 new AnimationSet("_", texture, 1, texture.Width, 1, false, 0)
-            }, "_", shouldCollide, health)
+            }, "_", shouldCollide, gravitable, health)
         {
 
         }
@@ -61,7 +64,8 @@ namespace Defense
 
         public virtual void Move()
         {
-            this.Velocity.Y += World.Gravity;
+            if (gravitable)
+                this.Velocity.Y += World.Gravity;
             this.Position += Velocity;
 
             if (Bottom > Engine.ScreenResolution.Y - World.BaseHeight)
@@ -79,6 +83,7 @@ namespace Defense
             if (Right > Engine.ScreenResolution.X)
             {
                 Right = Engine.ScreenResolution.X;
+                HitAgainstWall();
             }
         }
 

@@ -15,7 +15,7 @@ namespace Defense
         const int BASE_HEALTH = 2;
 
         public Alien(World world, Vector2 position, Vector2 initialSpeed)
-            : base(world, position, initialSpeed, new Vector2(SIZE_X, SIZE_Y), ResourceManager.GetTexture("Pixel"), true, BASE_HEALTH)
+            : base(world, position, initialSpeed, new Vector2(SIZE_X, SIZE_Y), ResourceManager.GetTexture("Pixel"), true, true, BASE_HEALTH)
         {
 
         } 

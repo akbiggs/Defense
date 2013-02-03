@@ -26,7 +26,7 @@ namespace Defense
         }
 
         public Player(World world, Vector2 position)
-            : base(world, position, Vector2.Zero, new Vector2(SIZE_X, SIZE_Y), ResourceManager.GetTexture("Pixel"), true, HEALTH)
+            : base(world, position, Vector2.Zero, new Vector2(SIZE_X, SIZE_Y), ResourceManager.GetTexture("Pixel"), true, true, HEALTH)
         {
 
         }
@@ -61,7 +61,7 @@ namespace Defense
 
         private void FireAt(Vector2 location)
         {
-            Vector2 fireOrigin = new Vector2(Top, Center.X);
+            Vector2 fireOrigin = new Vector2(Center.X, Top);
             Vector2 direction = Vector2.Normalize(location - fireOrigin);
             World.Projectiles.BufferAdd(new Projectile(World, fireOrigin, direction, direction * FIRE_SPEED));
         }
